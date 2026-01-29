@@ -1,0 +1,16 @@
+#referralLink {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px 20px;
+  font-family: "Poppins";
+  font-weight: 200;
+  font-size: 20px;
+}
+
+#copyReferralIcon {
+  transition: all 0.3s ease-in-out;
+}
+
+#copyReferralIcon.copied {
+  color: #9c9c9c;
+}
