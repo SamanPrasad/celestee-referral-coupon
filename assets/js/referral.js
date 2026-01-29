@@ -16,3 +16,41 @@ document
         }, 2000);
       });
   });
+
+// Social Sharing
+const referralLink = document.getElementById("referralLink").textContent;
+const shareText = "Join me and get exclusive referral rewards!";
+
+// WhatsApp Share
+document
+  .getElementById("shareWhatsApp")
+  .addEventListener("click", function (e) {
+    e.preventDefault();
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText + " " + referralLink)}`;
+    window.open(whatsappUrl, "_blank");
+  });
+
+// Facebook Share
+document
+  .getElementById("shareFacebook")
+  .addEventListener("click", function (e) {
+    e.preventDefault();
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(referralLink)}&quote=${encodeURIComponent(shareText)}`;
+    window.open(facebookUrl, "_blank", "width=600,height=400");
+  });
+
+// X (Twitter) Share
+document.getElementById("shareX").addEventListener("click", function (e) {
+  e.preventDefault();
+  const xUrl = `https://x.com/intent/tweet?url=${encodeURIComponent(referralLink)}&text=${encodeURIComponent(shareText)}`;
+  window.open(xUrl, "_blank", "width=600,height=400");
+});
+
+// Messenger Share
+document
+  .getElementById("shareMessenger")
+  .addEventListener("click", function (e) {
+    e.preventDefault();
+    const messengerUrl = `fb-messenger://share/?link=${encodeURIComponent(referralLink)}`;
+    window.open(messengerUrl, "_blank");
+  });
