@@ -17,6 +17,19 @@ document
       });
   });
 
+// Copy Coupon Code Functionality
+document.querySelectorAll(".copy-coupon-icon").forEach((icon) => {
+  icon.addEventListener("click", function () {
+    const couponCode = this.previousElementSibling.textContent.trim();
+    navigator.clipboard.writeText(couponCode).then(() => {
+      this.classList.add("copied");
+      setTimeout(() => {
+        this.classList.remove("copied");
+      }, 2000);
+    });
+  });
+});
+
 // Social Sharing
 const referralLink = document.getElementById("referralLink").textContent;
 const shareText = "Join me and get exclusive referral rewards!";

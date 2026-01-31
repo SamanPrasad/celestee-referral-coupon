@@ -24,7 +24,7 @@ add_action('woocommerce_account_referral-coupons_endpoint', function () {
 
     $user_id = get_current_user_id();
     $ref_link = home_url('/?ref=' . $user_id);
-    $coupons = get_user_meta($user_id, '_referral_coupon');
+    $coupons = get_user_meta($user_id, 'celestee_referral_coupon');
 
 ?>
     <h3>Your Referral Link</h3>
@@ -81,12 +81,18 @@ add_action('woocommerce_account_referral-coupons_endpoint', function () {
             <thead>
                 <tr>
                     <th>Coupon Code</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($coupons as $code): ?>
                     <tr>
-                        <td><?php echo esc_html($code); ?></td>
+                        <td class="coupon-code-cell">
+                            <span class="coupon-code"><?php echo esc_html($code); ?></span>
+                            <span class="copy-coupon-icon dashicons dashicons-admin-page"
+                                style="cursor:pointer; font-size:20px; margin-left:10px;"
+                                title="Copy coupon code"></span>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

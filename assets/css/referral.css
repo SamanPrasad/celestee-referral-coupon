@@ -14,3 +14,17 @@
 #copyReferralIcon.copied {
   color: #9c9c9c;
 }
+
+.copy-coupon-icon {
+  transition: all 0.3s ease-in-out;
+}
+
+.copy-coupon-icon.copied {
+  color: #9c9c9c;
+}
+
+.coupon-code-cell {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
