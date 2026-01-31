@@ -36,7 +36,7 @@ add_action('woocommerce_order_status_completed', function ($order_id) {
         get_userdata($referrer_id)->user_email
     ));
     $coupon->set_description('Referral reward coupon');
-    // $coupon->save();
+    $coupon->save();
 
     // Store coupon under referrer
     update_user_meta($referrer_id, 'celestee_referral_coupon', $coupon_code);

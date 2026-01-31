@@ -29,25 +29,6 @@ add_filter('woocommerce_email_classes', function ($emails) {
 });
 
 /* ---------------------------------------------------------
- * Expose plugin email templates to WooCommerce & YayMail
- * --------------------------------------------------------- */
-// add_filter('woocommerce_locate_template', function ($template, $template_name, $template_path) {
-
-//     // Only handle our referral email templates
-//     if (strpos($template_name, 'crc-referral-email.php') === false) {
-//         return $template;
-//     }
-
-//     $plugin_template = REFERRAL_PLUGIN_PATH . 'templates/' . $template_name;
-
-//     if (file_exists($plugin_template)) {
-//         return $plugin_template;
-//     }
-
-//     return $template;
-// }, 10, 3);
-
-/* ---------------------------------------------------------
  * Flush rewrite rules on activation
  * --------------------------------------------------------- */
 register_activation_hook(__FILE__, function () {

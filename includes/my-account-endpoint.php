@@ -77,26 +77,41 @@ add_action('woocommerce_account_referral-coupons_endpoint', function () {
     <h3>Your Referral Coupon Codes</h3>
 
     <?php if ($coupons): ?>
-        <table class="shop_table shop_table_responsive">
-            <thead>
-                <tr>
-                    <th>Coupon Code</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($coupons as $code): ?>
+        <?php
+        // Check if coupon has been used
+        $coupon_used = false;
+        foreach ($coupons as $code) {
+            $coupon = new WC_Coupon($code);
+            if ($coupon->get_id() && $coupon->get_usage_count() > 0) {
+                $coupon_used = true;
+                break;
+            }
+        }
+        ?>
+        <?php if ($coupon_used): ?>
+            <p style="font-size:17px;">You've used your earned coupon</p>
+        <?php else: ?>
+            <table class="shop_table shop_table_responsive">
+                <thead>
                     <tr>
-                        <td class="coupon-code-cell">
-                            <span class="coupon-code"><?php echo esc_html($code); ?></span>
-                            <span class="copy-coupon-icon dashicons dashicons-admin-page"
-                                style="cursor:pointer; font-size:20px; margin-left:10px;"
-                                title="Copy coupon code"></span>
-                        </td>
+                        <th>Coupon Code</th>
+                        <th></th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($coupons as $code): ?>
+                        <tr>
+                            <td class="coupon-code-cell">
+                                <span class="coupon-code"><?php echo esc_html($code); ?></span>
+                                <span class="copy-coupon-icon dashicons dashicons-admin-page"
+                                    style="cursor:pointer; font-size:20px; margin-left:10px;"
+                                    title="Copy coupon code"></span>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php endif; ?>
     <?php else: ?>
         <p style="font-size:17px;">No referral coupons earned yet.</p>
     <?php endif; ?>

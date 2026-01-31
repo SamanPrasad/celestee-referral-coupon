@@ -9,17 +9,16 @@ class CRC_Referral_Email extends WC_Email
     {
 
         $this->id             = 'crc_referral_email';
-        $this->title          = 'Referral Reward Email';
+        $this->title          = 'CELESTEE Referral Reward Email';
         $this->description    = 'Email sent when a referral coupon is earned';
 
         $this->heading        = 'You earned a referral reward!';
-        $this->subject        = 'Your Referral Coupon';
+        $this->subject        = 'CELESTEE Referral Coupon';
 
         $this->template_html  = 'emails/crc-referral-email.php';
         $this->template_plain = 'emails/plain/crc-referral-email.php';
 
-        // $this->template_base  = REFERRAL_PLUGIN_PATH . 'templates/';
-        $this->template_base  = WC()->template_path();;
+        $this->template_base  = REFERRAL_PLUGIN_PATH . 'templates/';
 
         parent::__construct();
 
@@ -47,13 +46,10 @@ class CRC_Referral_Email extends WC_Email
             $this->get_headers(),
             $this->get_attachments()
         );
-
-        error_log('email sent saman');
     }
 
     public function get_content_html()
     {
-        error_log('html content Saman');
         return wc_get_template_html(
             $this->template_html,
             [
